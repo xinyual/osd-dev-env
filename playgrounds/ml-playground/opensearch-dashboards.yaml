@@ -1,14 +1,7 @@
 replicaCount: 1
 image:
   repository: "opensearchproject/opensearch-dashboards"
-  tag: "3.1.0"
-
-plugins:
-  enabled: true
-  removeList:
-    - searchRelevanceDashboards
-  installList:
-    - https://github.com/Hailong-am/osd-dev-env/releases/download/searchrelevence/searchRelevanceDashboards-3.1.0.zip
+  tag: "3.3.0"
 
 config:
   # Default OpenSearch Dashboards configuration from docker image of Dashboards
@@ -45,6 +38,7 @@ ingress:
   annotations:
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS": 443}]'
     alb.ingress.kubernetes.io/ssl-redirect: "443"
+    alb.ingress.kubernetes.io/ssl-policy: ELBSecurityPolicy-TLS13-1-3-2021-06
   hosts:
     - host: ml.playground.opensearch.org
       paths:

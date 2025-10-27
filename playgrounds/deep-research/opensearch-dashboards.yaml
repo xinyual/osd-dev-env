@@ -1,7 +1,7 @@
 replicaCount: 1
 image:
-  repository: "opensearchstaging/opensearch-dashboards"
-  tag: "3.2.0"
+  repository: "r9h9r7k4/opensearch-dashboards-dev"
+  tag: "17452629068-playgrounds-deep-research"
 config:
   # Default OpenSearch Dashboards configuration from docker image of Dashboards
   opensearch_dashboards.yml:
@@ -20,12 +20,14 @@ config:
     uiSettings:
       overrides:
         "home:useNewHomePage": true
+    investigation.enabled: true
+    explore.enabled: true
 plugins:
   enabled: true
   removeList:
-    - observabilityDashboards
+    - investigationDashboards
   installList:
-    - https://github.com/wanglam/dashboards-observability/releases/download/3.2-experimental.16834654453/observabilityDashboards-3.2.0.zip
+    - https://github.com/wanglam/dashboards-investigation/releases/download/3.2-experimental.17758942368/investigationDashboards-3.2.0.zip
 
 ingress:
   enabled: true
@@ -41,3 +43,5 @@ ingress:
     - paths:
         - path: /
           backend: {}
+global:
+  dockerRegistry: public.ecr.aws
